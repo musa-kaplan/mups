@@ -1,0 +1,55 @@
+public class Cookies
+    {
+        public static bool QuickChance(int chance = 10)
+        {
+            return Random.Range(0, chance) == 0;
+        }
+
+        public static GameObject QuickFind(string word = "Player")
+        {
+            return GameObject.FindGameObjectWithTag(word) == null ? GameObject.Find(word) : GameObject.FindGameObjectWithTag(word);
+        }
+
+        public static void LevelUp(string prefName = "Level")
+        {
+            var i = PlayerPrefs.GetInt(prefName);
+            i++;
+            PlayerPrefs.SetInt(prefName, i);
+        }
+
+        public static void QuickScene(string sceneName = "0")
+        {
+            PlayerPrefs.Save();
+            if (sceneName == "0")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+    }
+
+    public class QuickRay
+    {
+        private static RaycastHit _hit;
+        private static Ray _ray;
+        private static Vector3 _pos;
+
+        public static Vector3 Point(Camera camera, float height = 1f)
+        {
+            _ray = camera.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(_ray, out _hit, Mathf.Infinity);
+            _pos = _hit.point;
+            _pos.y = height;
+            return _pos;
+        }
+
+        public static RaycastHit Object(Camera camera)
+        {
+            _ray = camera.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(_ray, out _hit, Mathf.Infinity);
+            return _hit;
+        }
+    }
