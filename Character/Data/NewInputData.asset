@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd2317d946f5b149aae86515a9059bd, type: 3}
+  m_Name: NewInputData
+  m_EditorClassIdentifier: 
+  forward: 119
+  back: 115
+  right: 100
+  left: 97
+  jump: 32
+  duck: 306
+  run: 304
+  rotateRight: 101
+  rotateLeft: 113
