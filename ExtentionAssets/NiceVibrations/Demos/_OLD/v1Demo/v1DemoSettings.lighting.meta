@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: 491ab0ab4f793684db98d6ba52e4082b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+=======
+<<<<<<<< Updated upstream:Assets/3rdPartyAssets/PolygonalMind/LowPolyOffice/Scenes/Demo Scene/Animation Controllers/New Animator Controller 1.controller.meta
+guid: 3f7508965513c8e44ae2ad90671c34a2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+========
+guid: cb06473d075d2cd43ba68a94fdcf673e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+>>>>>>>> Stashed changes:Assets/MusaUtils/ExtentionAssets/NiceVibrations/Demos/_OLD/v1Demo/v1DemoSettings.lighting.meta
+>>>>>>> Stashed changes
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using MusaUtils.RigidBody;
 using UnityEngine;
 
 namespace MusaUtils.Character
@@ -8,7 +9,7 @@ namespace MusaUtils.Character
     public class MuCharacter : MonoBehaviour
     {
         [Range(0.01f, 1f)] [SerializeField] private float movementSmoothness = .1f;
-        [Range(0.1f, 20f)] [SerializeField] private float rotationSmoothness = 1f;
+        [Range(0.1f, 20f)] [SerializeField] private float rotationSmoothness = 10f;
         [SerializeField] private InputData inputData;
         [SerializeField] private CharacterData characterData;
 
@@ -84,6 +85,7 @@ namespace MusaUtils.Character
             
             currentSpeed = isDucked ? characterData.duckedMovementSpeed : characterData.movementSpeed;
             currentSpeed = isRunning ? characterData.runningSpeed : currentSpeed;
+            currentSpeed = !canJump ? (characterData.duckedMovementSpeed / 2f) : currentSpeed;
 
             zAxis += transform.forward * (isForward ? currentSpeed : 0);
             zAxis += transform.forward * (isBack ? -currentSpeed : 0);
@@ -136,6 +138,7 @@ namespace MusaUtils.Character
         {
             gameObject.tag = "Player";
             _rigidbody = GetComponent<Rigidbody>();
+            QuickBody.GetRigid(_rigidbody).FreezeRotation(true, false, true);
             
             for (var i = 0; i < transform.childCount; i++)
             {

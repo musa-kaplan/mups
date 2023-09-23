@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+guid: 3f18a584036b1b241a60269344119d18
+=======
+<<<<<<<< Updated upstream:Assets/Materials/Wood.mat.meta
+guid: ed2a5f9ece250574b8c927ecf9d8a199
+========
+guid: af0a0868a3472464998630bf41b2131f
+>>>>>>>> Stashed changes:Assets/MusaUtils/ExtentionAssets/NiceVibrations/Demos/NiceVibrationsDemoSettings.lighting.meta
+>>>>>>> Stashed changes
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

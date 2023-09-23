@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace MusaUtils.Pooling
@@ -61,13 +60,29 @@ namespace MusaUtils.Pooling
             return FindPool(pool) ? _go : null;
         }
 
-        private async void ReturnObjectToPool(MonoPools _pool, GameObject _object, float _countDown)
+        public async void ReturnObjectToPool(MonoPools _pool, GameObject _object, float _countDown)
         {
+            var p = GetPool(_pool);
             await UniTask.Delay(TimeSpan.FromSeconds(_countDown));
             _object.transform.localPosition = Vector3.zero;
-            _pool._objectList.Add(_object);
+            p._objectList.Add(_object);
             _object.SetActive(false);
-            _pool._activatedCount--;
+            p._activatedCount--;
+        }
+
+        public void ClearAllPools()
+        {
+            foreach (var p in _instance._pools)
+            {
+                foreach (var go in p._objectList)
+                {
+                    ReturnObjectToPool(p, go, 0);
+                }
+
+                p._objectList.Clear();
+            }
+
+            _instance._pools.Clear();
         }
 
         private bool FindPool(MonoPools pool)

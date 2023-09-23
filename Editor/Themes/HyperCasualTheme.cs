@@ -23,9 +23,11 @@ namespace MusaUtils.Editor.Themes
         private Rect _gameManagerRect;
         private Rect _sfxManagerRect;
         private Rect _uiManagerRect;
+        private Rect _settingsManagerRect;
         private GUIStyle _gmStyle;
         private GUIStyle _sfxStyle;
         private GUIStyle _uiStyle;
+        private GUIStyle _settingsStyle;
         private GUIStyle _haveOneStyle;
 
         private GameObject _object;
@@ -36,10 +38,12 @@ namespace MusaUtils.Editor.Themes
             _gameManagerRect = new Rect(25, 10, 250, 50);
             _sfxManagerRect = new Rect(25, 70, 250, 50);
             _uiManagerRect = new Rect(25, 130, 250, 50);
+            _settingsManagerRect = new Rect(25, 190, 250, 50);
 
             _gmStyle = SetStyles(new Color(.4f, .3f, .3f), new Color(1f, .8f, .8f));
             _sfxStyle = SetStyles(new Color(.3f, .4f, .4f), new Color(.8f, 1f, .8f));
             _uiStyle = SetStyles(new Color(.4f, .3f, .6f), new Color(.8f, .7f, 1f));
+            _settingsStyle = SetStyles(new Color(.2f, .6f, .6f), new Color(.5f, .7f, 1f));
             _haveOneStyle = SetStyles(new Color(.4f, .2f, .2f), new Color(1f, .4f, .4f));
         }
 
@@ -47,7 +51,7 @@ namespace MusaUtils.Editor.Themes
         {
             GUILayout.BeginArea(_gameManagerRect);
             GUILayout.Label("GAME MANAGER", _gmStyle);
-            if (FindObjectOfType<GameManager>() == null)
+            if (FindObjectOfType<HyperGameManager>() == null)
             {
                 SetGameManagerButton();
             }
@@ -61,7 +65,7 @@ namespace MusaUtils.Editor.Themes
             
             GUILayout.BeginArea(_sfxManagerRect);
             GUILayout.Label("SFX MANAGER", _sfxStyle);
-            if (FindObjectOfType<SoundManager>() == null)
+            if (FindObjectOfType<HyperSoundManager>() == null)
             {
                 SetSFXManagerButton();
             }
@@ -75,7 +79,7 @@ namespace MusaUtils.Editor.Themes
             
             GUILayout.BeginArea(_uiManagerRect);
             GUILayout.Label("UI MANAGER & CANVAS", _uiStyle);
-            if (FindObjectOfType<UiManager>() == null)
+            if (FindObjectOfType<HyperUiManager>() == null)
             {
                 SetUiButton();
             }
@@ -84,17 +88,41 @@ namespace MusaUtils.Editor.Themes
                 GUILayout.Label("YOU ALREADY HAVE ONE...", _haveOneStyle);
             }
             GUILayout.EndArea();
+            
+            GUILayout.Space(10);
+            
+            GUILayout.BeginArea(_settingsManagerRect);
+            GUILayout.Label("SETTINGS MANAGER", _settingsStyle);
+            if (FindObjectOfType<HyperSettingsManager>() == null)
+            {
+                SetSettingsButton();
+            }
+            else
+            {
+                GUILayout.Label("YOU ALREADY HAVE ONE...", _haveOneStyle);
+            }
+            
+            GUILayout.EndArea();
         }
 
         private void SetUiButton()
         {
             if (GUILayout.Button("Add", GUILayout.Height(30)))
             {
-                _object = new GameObject("EventSystem");
-                ObjectFactory.AddComponent<EventSystem>(_object);
-                ObjectFactory.AddComponent<StandaloneInputModule>(_object);
+                if (!FindObjectOfType<EventSystem>()) { BaseElements.CreateEventSystem(); }
 
                 _object = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/MusaUtils/Templates/HyperCasual/Prefabs/UI.prefab");
+                PrefabUtility.InstantiatePrefab(_object);
+            }
+        }
+        
+        private void SetSettingsButton()
+        {
+            if (GUILayout.Button("Add", GUILayout.Height(30)))
+            {
+                if (!FindObjectOfType<EventSystem>()) { BaseElements.CreateEventSystem(); }
+                
+                _object = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/MusaUtils/Templates/HyperCasual/Prefabs/Settings.prefab");
                 PrefabUtility.InstantiatePrefab(_object);
             }
         }
@@ -104,7 +132,7 @@ namespace MusaUtils.Editor.Themes
             if (GUILayout.Button("Add", GUILayout.Height(30)))
             {
                 _object = new GameObject("SFX Manager");
-                ObjectFactory.AddComponent<SoundManager>(_object);
+                ObjectFactory.AddComponent<HyperSoundManager>(_object);
             }
         }
         
@@ -113,7 +141,7 @@ namespace MusaUtils.Editor.Themes
             if (GUILayout.Button("Add", GUILayout.Height(30)))
             {
                 _object = new GameObject("GameManager");
-                ObjectFactory.AddComponent<GameManager>(_object);
+                ObjectFactory.AddComponent<HyperGameManager>(_object);
             }
         }
 

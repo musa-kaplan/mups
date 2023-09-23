@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using MusaUtils.Attributes;
 using UnityEngine;
 
 namespace MusaUtils.Pooling
 {
     [Serializable]
-    [CreateAssetMenu(menuName = "AquaPool", fileName = "NewPool")]
+    [CreateAssetMenu(menuName = "MU/AquaPool", fileName = "NewPool")]
     public class MonoPools : ScriptableObject
     {
         public string _name;
@@ -16,7 +14,6 @@ namespace MusaUtils.Pooling
 
         public bool _autoDestruct;
 
-        [ConditionalHide("_autoDestruct", true)]
         public float _countDown;
 
         [HideInInspector] public List<GameObject> _objectList;

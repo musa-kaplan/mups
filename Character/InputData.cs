@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MusaUtils.Character
 {
-    [CreateAssetMenu(menuName = "InputData", fileName = "NewInputData")]
+    [CreateAssetMenu(menuName = "MU/Character/PC/InputData", fileName = "NewInputData")]
     public class InputData : ScriptableObject
     {
         [Header("Movement")]

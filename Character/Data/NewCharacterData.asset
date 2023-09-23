@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dbd7da1f2559f4ca14add2426d7934, type: 3}
   m_Name: NewCharacterData
   m_EditorClassIdentifier: 
-  movementSpeed: 12
-  duckedMovementSpeed: 9
-  runningSpeed: 15
-  jumpForce: 1000
+  movementSpeed: 11
+  duckedMovementSpeed: 10
+  runningSpeed: 13
+  jumpForce: 900
   jumpDelay: 0.75
-  rotateSpeed: 1
   lookRotationAngle: 30
+  gravity: -3
   defaultFieldOfView: 60
   runningFieldOfView: 75
   duckFieldOfView: 55

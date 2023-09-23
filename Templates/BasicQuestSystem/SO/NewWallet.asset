@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdb4e8083d006544a3c30674437fda9, type: 3}
+  m_Name: NewWallet
+  m_EditorClassIdentifier: 
+  currencies:
+  - currencyType: 0
+    currencyPool: {fileID: 0}
+    currencySprite: {fileID: 21300000, guid: 853184c0ce71a24409fdb0078b6b8425, type: 3}
+    amount: 0
+    singularUnitAmount: 1
+    startAmount: 0
